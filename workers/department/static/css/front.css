@@ -1,0 +1,180 @@
+  /* CSS for layout */
+  .container {
+    display: flex; /* This will lay the divs side by side */
+    justify-content: space-between; /* Space out the divs */
+}
+
+.box {
+    width: 460px;
+    height: 729px;
+    margin-right: 20px; /* Add space between the box and image container */
+}
+
+.box .overlap-group {
+    position: relative;
+    width: 460px;
+    height: 729px;
+    background-color: #ffffff33;
+    border-radius: 20.29px;
+    box-shadow: 2.03px 2.03px 8.12px 4.06px #00000040;
+}
+
+.box .overlap {
+    position: absolute;
+    width: 414px;
+    height: 663px;
+    top: 16px;
+    left: 22px;
+}
+
+.box .circle-logo {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 10px;
+    left: 130px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.box .logo {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.box .subtract {
+    position: absolute;
+    width: 414px;
+    height: 627px;
+    top: 60px;
+    left: 0;
+    background-color: #1E1E1E;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.box .text-wrapper {
+    position: absolute;
+    width: 320px;
+    top: 513px;
+    left: 23px;
+    font-family: "Poppins-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 25px;
+    z-index: 3;
+}
+
+.box .div {
+    position: absolute;
+    top: 583px;
+    left: 23px;
+    font-family: "Poppins-MediumItalic", Helvetica;
+    font-weight: 500;
+    font-style: italic;
+    color: #ffffff;
+    font-size: 18.3px;
+    z-index: 3;
+}
+
+.box .text-wrapper-2 {
+    position: absolute;
+    top: 623px;
+    left: 47px;
+    font-family: "Poppins-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 16.9px;
+    z-index: 3;
+}
+
+.box .text-wrapper-3 {
+    position: absolute;
+    top: 541px;
+    left: 23px;
+    font-family: "Poppins-Black", Helvetica;
+    font-weight: 900;
+    color: #ffffff;
+    font-size: 37.9px;
+    z-index: 3;
+}
+
+.box .icon-globe {
+    position: absolute;
+    top: 627px;
+    left: 22px;
+    font-size: 20px;
+    color: #ffffff;
+    z-index: 3;
+}
+
+.box .image-container {
+    position: absolute;
+    width: 227px;
+    height: 233px;
+    top: 225px;
+    left: 87px;
+    border-radius: 10px;
+    z-index: 3;
+    overflow: hidden; /* Ensures the image stays within the rounded container */
+}
+
+.box .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire container */
+}
+
+.box .icon-media-record {
+    position: absolute;
+    top: 416px;
+    left: 273px;
+    font-size: 47px;
+    color: #1E1E1E;
+    z-index: 3;
+}
+
+.box .p {
+    position: absolute;
+    width: 402px;
+    top: 690px;
+    left: 35px;
+    font-family: "Poppins-LightItalic", Helvetica;
+    font-weight: 300;
+    font-style: italic;
+    color: #000;
+    font-size: 13px;
+    z-index: 3;
+}
+
+.image-container {
+    position: relative;
+    width: 460px; /* Match the width of .box */
+    height: 729px; /* Match the height of .box */
+    overflow: hidden; /* Ensures the image stays within the container */
+    margin-left: 20px; /* Add space between the box and image container */
+}
+
+.image-container img {
+    width: 100%; /* Make the image fill the width of the container */
+    height: 100%; /* Make the image fill the height of the container */
+    object-fit: cover; /* Ensures the image covers the entire container proportionally */
+}
+
+/* New square div */
+.square-div {
+    position: absolute;
+    width: 167px;
+    height: 167px;
+    background-color: #ffffff; /* You can change the color */
+    bottom: 90.53px; /* 85.53px from the bottom of the image container */
+    left: 155.28px; /* 155.28px from the left of the image container */
+    z-index: 4; /* Make sure it's on top of the image */
+}

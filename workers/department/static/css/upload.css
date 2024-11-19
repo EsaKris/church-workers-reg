@@ -1,0 +1,74 @@
+/* File Upload Component Styles */
+.property-upload {
+    display: inline-flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px;
+    position: relative;
+    background-color: #374151;
+    border-radius: 5px;
+}
+
+.property-upload .component-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    position: relative;
+    flex: 0 0 auto;
+    margin-top: -1.00px;
+    margin-bottom: -1.00px;
+    margin-left: -1.00px;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #10b981;
+}
+
+.property-upload .frame {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.property-upload .text-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: var(--menu-l-poppins-m-font-family);
+    font-weight: var(--menu-l-poppins-m-font-weight);
+    color: #10b981;
+    font-size: var(--menu-l-poppins-m-font-size);
+    letter-spacing: var(--menu-l-poppins-m-letter-spacing);
+    line-height: var(--menu-l-poppins-m-line-height);
+    white-space: nowrap;
+    font-style: var(--menu-l-poppins-m-font-style);
+}
+
+.property-upload .component-chosen {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.property-upload .div {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 22px;
+    white-space: nowrap;
+}
+
+input[type="file"] {
+    display: none;
+}

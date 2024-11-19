@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Worker</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #001600;
+            color: #fff;
+        }
+
+        .arrow-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .arrow-button:hover {
+            color: #007B00;
+        }
+
+        .workers-section {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 52px 50px;
+            align-items: center;
+            background-color: #001600;
+        }
+
+        .form-title {
+            margin: 30px 0;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-column {
+            flex: 1;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-input,
+        select {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus,
+        select:focus {
+            outline: none;
+            border: 2px solid #007B00;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .submit-button {
+            border-radius: 20px;
+            background-color: #fff;
+            color: #171f12;
+            padding: 20px 64px;
+            font: 600 20px Poppins, sans-serif;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 476px;
+            margin: 40px auto;
+        }
+
+        .submit-button:hover {
+            background-color: #007B00;
+            color: #fff;
+        }
+
+        .error-message {
+            color: #ff3333;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .submit-button {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+
+        /* Styled File Input */
+        .property-upload {
+            display: inline-flex;
+            align-items: center;
+            gap: 30px;
+            padding: 10px;
+            position: relative;
+            background-color: #374151;
+            border-radius: 5px;
+        }
+
+        .property-upload .component-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            position: relative;
+            flex: 0 0 auto;
+            margin-top: -1.00px;
+            margin-bottom: -1.00px;
+            margin-left: -1.00px;
+            border-radius: 5px;
+            border: 1px solid;
+            border-color: #10b981;
+        }
+
+        .property-upload .frame {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            flex: 0 0 auto;
+        }
+
+        .property-upload .text-wrapper {
+            position: relative;
+            width: fit-content;
+            margin-top: -1.00px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: #10b981;
+            font-size: 16px;
+            line-height: 22px;
+            white-space: nowrap;
+        }
+
+        .property-upload .component-chosen {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            flex: 0 0 auto;
+        }
+
+        .property-upload .div {
+            position: relative;
+            width: fit-content;
+            margin-top: -1.00px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 22px;
+            white-space: nowrap;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-image {
+            margin-top: 20px;
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'home' %}" class="arrow-button">← Back</a>
+
+    <section class="workers-section">
+        <h1 class="form-title">Register as a Worker</h1>
+        <form method="post" class="form-container" onsubmit="return validateForm()" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="form-field">
+                        <label for="id_first_name" class="visually-hidden">First Name</label>
+                        {{ form.first_name }}
+                        {% if form.first_name.errors %}
+                            <div class="error-message">{{ form.first_name.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-column">
+                    <div class="form-field">
+                        <label for="id_last_name" class="visually-hidden">Last Name</label>
+                        {{ form.last_name }}
+                        {% if form.last_name.errors %}
+                            <div class="error-message">{{ form.last_name.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-column">
+                    <div class="form-field">
+                        <label for="id_email" class="visually-hidden">Email</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="error-message">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-column">
+                    <div class="form-field">
+                        <label for="id_phone_number" class="visually-hidden">Phone Number</label>
+                        {{ form.phone_number }}
+                        {% if form.phone_number.errors %}
+                            <div class="error-message">{{ form.phone_number.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label for="id_department" class="visually-hidden">Department</label>
+                {{ form.department }}
+                {% if form.department.errors %}
+                    <div class="error-message">{{ form.department.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- New Profile Picture Upload Section -->
+            <div class="property-upload">
+                <label for="id_profile_picture" class="component-button">
+                    <div class="frame">
+                        <div class="text-wrapper">Choose File</div>
+                    </div>
+                </label>
+                <input type="file" name="profile_picture" id="id_profile_picture" accept="image/*" onchange="previewImage(event)">
+                <div class="component-chosen">
+                    <div class="div" id="file-chosen">No File Chosen</div>
+                </div>
+            </div>
+            <div class="file-upload-image-container">
+                <img id="preview" class="file-upload-image" src="" alt="Profile Preview" style="display: none;">
+            </div>
+            {% if form.profile_picture.errors %}
+                <div class="error-message">{{ form.profile_picture.errors }}</div>
+            {% endif %}
+
+            <button type="submit" class="submit-button">Register</button>
+        </form>
+    </section>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Clear error messages
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(error => error.textContent = '');
+
+            return isValid;
+        }
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const fileChosenText = document.getElementById('file-chosen');
+            const preview = document.getElementById('preview');
+
+            if (file) {
+                // Check file size (1MB)
+                if (file.size > 1 * 1024 * 1024) {
+                    alert('File size should not exceed 1MB.');
+                    return;
+                }
+
+                // Check if the image is square
+                const img = new Image();
+                img.onload = function() {
+                    if (img.width !== img.height) {
+                        alert('Please upload a square image (width and height must be equal).');
+                        return;
+                    }
+
+                    // Update the chosen file name
+                    fileChosenText.textContent = file.name;
+
+                    // Show the preview image
+                    const reader = new FileReader();
+                    reader.onload = function() {
+                        preview.src = reader.result;
+                        preview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                };
+                img.src = URL.createObjectURL(file);
+            } else {
+                // Reset if no file is selected
+                fileChosenText.textContent = 'No File Chosen';
+                preview.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

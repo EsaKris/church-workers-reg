@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{% static 'css/front.css' %}" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="thankyou-container">
+            <h1 class="thankyou-title">Thank You for Registering, {{ registered_worker.first_name }}!</h1>
+            <p class="thankyou-message">Your registration was successful. Meet the New Wine Media for your card.</p>
+            <a href="/" class="return-home">Go Back to Home</a>
+        </div>
+
+        <div class="container">
+            <div class="box">
+                <div class="front">
+                    <div class="overlap-group">
+                        <div class="overlap">
+                            <div class="circle-logo">
+                                <img class="logo" src="{% static 'images/logo.png' %}" alt="Logo" />
+                            </div>
+                            <div class="subtract"></div>
+                            <div class="text-wrapper">{{ registered_worker.first_name }} {{ registered_worker.last_name }}</div>
+                            <div class="div">{{ registered_worker.email }}</div>
+                            <div class="text-wrapper-2">againandafresh.org</div>
+                            <div class="text-wrapper-3">{{ registered_worker.department }}</div>
+                            <i class="fas fa-globe icon-globe"> </i>
+                            <div class="image-container">
+                                <!-- Display worker's profile picture if available -->
+                                {% if registered_worker.profile_picture %}
+                                    <img class="profile-image" src="{{ registered_worker.profile_picture.url }}" alt="Profile" />
+                                {% else %}
+                                    <img class="profile-image" src="{% static 'images/default.jpeg' %}" alt="Default Profile" />
+                                {% endif %}
+                            </div>
+                            <i class="fas fa-check-circle icon-media-record"></i>
+                        </div>
+                        <p class="p">This ID card is the property of The Again and Afresh Church</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="{% static 'images/Back.png' %}" alt="Side-by-side Image">
+                <div class="square-div">
+                    <img src="{{ registered_worker.qr_code_url }}" alt="QR Code" class="qr-image" />
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
